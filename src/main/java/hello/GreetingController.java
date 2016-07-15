@@ -1,8 +1,5 @@
 package hello;
 
-import OData.CsdlEdmProvider.DemoEdmProvider;
-import OData.CsdlEdmProvider.DemoEntityCollectionProcessor;
-import org.apache.olingo.commons.api.edmx.EdmxReference;
 import org.apache.olingo.commons.api.http.HttpHeader;
 import org.apache.olingo.commons.api.http.HttpMethod;
 import org.apache.olingo.server.api.*;
@@ -46,15 +43,7 @@ public class GreetingController {
     /** The enity collection processor. */
     private DemoEntityCollectionProcessor entityCollectionProcessor = new DemoEntityCollectionProcessor();
 
-    @RequestMapping(value = "/oded/")
-    public List<Product> test()
-    {
-        List<Product> value = repo.findByName("XBox 360");
-
-        return value;
-    }
-
-    @RequestMapping(value = "/test/")
+    @RequestMapping(value = "*")
     public ResponseEntity<String> greeting(final HttpServletRequest req) {
         try {
             // create odata handler and configure it with CsdlEdmProvider and Processor

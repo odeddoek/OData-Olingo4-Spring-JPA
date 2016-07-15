@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package OData.CsdlEdmProvider;
+package hello;
 
 import java.util.ArrayList;
 import java.util.Arrays;
