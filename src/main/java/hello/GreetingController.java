@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -35,16 +36,14 @@ public class GreetingController {
     private ApplicationContext ctx;
 
     @Autowired
-    private ProductRepository repo;
+    private DemoEdmProvider edmProvider;
 
-    /** The edm provider. */
-    private DemoEdmProvider edmProvider = new DemoEdmProvider();
-
-    /** The enity collection processor. */
-    private DemoEntityCollectionProcessor entityCollectionProcessor = new DemoEntityCollectionProcessor();
+    @Autowired
+    private DemoEntityCollectionProcessor entityCollectionProcessor;
 
     @RequestMapping(value = "*")
     public ResponseEntity<String> greeting(final HttpServletRequest req) {
+
         try {
             // create odata handler and configure it with CsdlEdmProvider and Processor
             OData odata = OData.newInstance();
